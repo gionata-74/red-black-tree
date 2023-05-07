@@ -25,9 +25,9 @@ def rb_insert(tree, key, data):
     tree.nodes[key] = new_node
 
     # Update left_most and right_most
-    if tree.left_most is 0 or key < tree.left_most:
+    if tree.left_most == 0 or key < tree.left_most:
         tree.left_most = new_node.key
-    if tree.right_most is 0 or key > tree.right_most:
+    if tree.right_most == 0 or key > tree.right_most:
         tree.right_most = new_node.key
     
     rb_insert_fixup(tree, new_node)
@@ -138,12 +138,13 @@ def display_tree(btree):
 
 my_tree = RBTree()
 
+import random
 
-rb_insert(my_tree, 10, {})
-rb_insert(my_tree, 2, {})
-rb_insert(my_tree, 3, {})
-rb_insert(my_tree, 6, {})
-rb_insert(my_tree, 9, {})
-rb_insert(my_tree, 1, {})
+my_list = [i for i in range(1, 20)]
+random.shuffle(my_list)
+
+for i in my_list:
+  rb_insert(my_tree, i, {})
+
 display_tree(my_tree)
 print("END")
